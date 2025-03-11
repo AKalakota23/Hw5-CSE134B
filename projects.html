@@ -8,12 +8,22 @@
 </head>
 <body>
     <header>
-        <nav>
+        <!-- Theme Switcher Button  -->
+<button id="theme-switcher" class="theme-switcher" aria-label="Toggle dark/light theme"></button>
+<noscript>
+  <style>
+    #theme-switcher { display: none; }
+  </style>
+  <p class="noscript-notice">Note: Theme switching requires JavaScript.</p>
+</noscript>
+
+        <nav class = "menu">
+            <ul>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="experience.html">Resume</a>
             <a href="contact.html">Contact</a>
-           
+           </ul>
         </nav>
     </header>
     
@@ -154,5 +164,7 @@
         ctx.lineTo(250, 150);
         ctx.stroke();
     </script>
+    <script src="script.js"></script>
+
 </body>
 </html>

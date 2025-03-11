@@ -1,75 +1,86 @@
-/* Global Styles */
+/* Global Styles and CSS Variables for Light Theme */
 :root {
     --primary-color: #056c08;
     --secondary-color: #252525;
     --text-color: rgb(255, 255, 255);
     --bg-color: rgb(57, 57, 57);
     --hover-color: color-mix(in srgb, red 60%, blue 40%);
-}
-
-body {
-    font-family: 'CustomFont', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+  }
+  
+  /* Dark Theme Overrides */
+  .dark-theme {
+    --primary-color: #8bc34a;
+    --secondary-color: #333333;
+    --text-color: #f0f0f0;
+    --bg-color: #121212;
+    --hover-color: #555555;
+  }
+  
+  /* Global Element Styles */
+  body {
+    font-family: 'CustomFont', 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: var(--text-color, #333);
     background-color: var(--bg-color, rgb(237, 237, 237));
     display: grid;
     grid-template-rows: auto 1fr auto;
     grid-template-columns: 1fr;
     min-height: 100vh;
-}
-
-a{
-    color:#25a8e4
-}
-hgroup{
+  }
+  
+  a {
+    color: #25a8e4;
+  }
+  
+  hgroup {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-/* Custom Font with Fallback */
-@font-face {
+  }
+  
+  /* Custom Font Declaration */
+  @font-face {
     font-family: 'CustomFont';
     src: url('fonts/gellix-15.woff2') format('woff2'),
          url('fonts/gellix-15.woff') format('woff');
     font-display: swap;
-}
-
-h1, h2, h3 {
+  }
+  
+  h1, h2, h3 {
     font-family: 'CustomFont', sans-serif;
-}
-
-nav {
+  }
+  
+  /* Navigation Styles */
+  nav {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     background-color: #033605;
-}
-
-nav ul {
+  }
+  
+  nav ul {
     display: flex;
     justify-content: space-around;
     list-style: none;
     padding: 0;
     overflow: hidden;
-   
-}
-
-nav a {
+  }
+  
+  nav a {
     text-decoration: none;
     font-size: 1.1rem;
     padding: 10px 15px;
     transition: color 0.3s ease-in-out;
     display: inline-block;
-    color: #4eee53
-}
-
-nav a:hover {
-    color: var(--hover-color);
-    background-color: darkgray;
+    color: #4eee53;
+  }
+  
+  nav a:hover {
+    color: red;
+    background-color: #023103;
     transform: scale(1.1);
-}
-
-/* Hamburger Menu Button - Hidden on Desktop */
-.menu-toggle {
+  }
+  
+  /* Hamburger Menu Button - Hidden on Desktop */
+  .menu-toggle {
     display: none;
     font-size: 2rem;
     background: none;
@@ -79,167 +90,223 @@ nav a:hover {
     position: absolute;
     top: 10px;
     right: 20px;
-}
-
-/* For Mobile*/
-@media (max-width: 600px) {
-    .menu-toggle{
-        display:block;
+  }
+  
+  /* Theme Switcher Button & Container */
+  .theme-switcher-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  button.theme-switcher {
+    background-color: var(--primary-color, #056c08);
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: static;
+    padding: 0.5em;
+    border-radius: 4px;
+  }
+  
+  button.theme-switcher:hover {
+    background-color: var(--hover-color, #033605);
+  }
+  /* Center the saved custom themes dropdown */
+.custom-theme-picker #saved-theme-selector {
+    display: block;
+    margin: 8px auto;
+  }
+  
+  /* Add extra spacing above and below the Apply Custom Theme button */
+  .custom-theme-picker button#apply-custom-theme {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* Optionally, add extra padding inside the button */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  
+  /* Custom Theme Picker Styling (Dropdown using <details>) */
+  .custom-theme-picker {
+    max-width: 300px;
+    margin: 10px auto;
+    border: 1px solid var(--secondary-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    padding: 5px;
+  }
+  
+  .custom-theme-picker summary {
+    cursor: pointer;
+    padding: 5px;
+    font-weight: bold;
+  }
+  
+  .custom-theme-picker .custom-theme-options {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .custom-theme-picker label {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .custom-theme-picker input[type="color"],
+  .custom-theme-picker input[type="text"],
+  .custom-theme-picker select {
+    margin-bottom: 10px;
+    padding: 4px;
+    width: 80%;
+    font-size: 0.9rem;
+  }
+  
+  /* Responsive Styles for Mobile and Tablet */
+  @media (max-width: 600px) {
+    .menu-toggle {
+      display: block;
     }
-    img{
-        max-width: 90%;
-        height: auto;
+    img {
+      max-width: 90%;
+      height: auto;
     }
     nav ul {
-        display: none; /* Hide menu by default */
-        flex-direction: column;
-        text-align: center;
-        background: var(--secondary-color);
-        position: absolute;
-        top: 50px;
-        left: 0;
-        width: 100%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 20px;
+      display: none;
+      flex-direction: column;
+      text-align: center;
+      background: var(--secondary-color);
+      position: absolute;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
     }
-
     nav ul.active {
-        display: flex; /* Show menu when toggled */
+      display: flex;
     }
-}
-
-/* Tablet (Medium Screens) */
-@media (min-width: 601px) and (max-width: 1024px) {
+  }
+  
+  @media (min-width: 601px) and (max-width: 1024px) {
     body {
-        font-size: 1.1rem;
+      font-size: 1.1rem;
     }
-
     nav ul {
-        justify-content: space-around;
+      justify-content: space-around;
     }
-}
-
-/* Desktop (Large Screens) */
-@media (min-width: 1025px) {
+  }
+  
+  @media (min-width: 1025px) {
     body {
-        font-size: 1rem;
+      font-size: 1rem;
     }
-}
-
-/* Hero Section */
-.hero {
+  }
+  
+  /* Hero Section */
+  .hero {
     height: 100dvh;
     animation: fadeIn 1s ease-in;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-@keyframes fadeIn {
+  }
+  
+  @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-/* Buttons */
-button {
+  }
+  
+  /* Button Styles */
+  button {
     font-size: 1rem;
     padding: 10px 15px;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-}
-
-button:hover {
+  }
+  
+  button:hover {
     background-color: var(--hover-color);
     transform: scale(1.05);
     box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2);
-}
-
-/* Images & Picture Optimization */
-img {
+  }
+  
+  /* Image Styles */
+  img {
     object-fit: cover;
     width: 50%;
     height: auto;
     border-radius: 8px;
-}
-
-.pfp{
-    width: 300px;  
+  }
+  
+  .pfp {
+    width: 300px;
     height: auto;
     border-radius: 5px;
-}
-
-.hardhack-pic{
-    width: 400px; 
+  }
+  
+  .hardhack-pic {
+    width: 400px;
     height: auto;
     border-radius: 5px;
-}
-
-picture img {
+  }
+  
+  picture img {
     width: 35%;
     height: auto;
     display: block;
-}
-
-
-section:has(h2) h2 {
-    background-color: #033605;    
+  }
+  
+  /* Section Headings */
+  section:has(h2) h2,
+  article:has(h2) h2 {
+    background-color: #033605;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
     padding: 7px 12px;
     margin: 10px 0;
-    
-
-}
-
-article:has(h2) h2{
-    background-color: #033605;    
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
-    padding: 7px 12px;
-    margin: 10px 0;
-}
-
-
-
-
-
-/* Grid Layout for Projects */
-.projects {
+  }
+  
+  /* Grid Layout for Projects */
+  .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-}
-
-/* Table Styling */
-table {
+  }
+  
+  /* Table Styling */
+  table {
     width: 100%;
-    border-collapse: collapse;    
-}
-
-table th, table td {
+    border-collapse: collapse;
+  }
+  
+  table th,
+  table td {
     border: 1px solid var(--primary-color);
     padding: 8px;
     text-align: left;
-}
-td{
+  }
+  
+  td {
     background-color: #033605;
-}
-
-table thead {
+  }
+  
+  table thead {
     background-color: var(--secondary-color);
-}
-
-/* Apply styles ONLY to the Contact Page */
-.contact-page main {
+  }
+  
+  /* Contact Page Form Styles */
+  .contact-page main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
-}
-
-
-/* Contact Page Form Styling */
-.contact-page form {
+  }
+  
+  .contact-page form {
     display: grid;
     gap: 15px;
     width: 400px;
@@ -247,47 +314,96 @@ table thead {
     padding: 20px 40px;
     border-radius: 12px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-/* Labels */
-.contact-page label {
+  }
+  
+  .contact-page .required {
+    color: red;
+  }
+  
+  .contact-page label {
     font-weight: bold;
     display: block;
-}
-
-/* Input Fields */
-.contact-page input, 
-.contact-page textarea, 
-.contact-page select {
+  }
+  
+  .contact-page input,
+  .contact-page textarea,
+  .contact-page select {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-}
-
-/* Dropdown Styling */
-.contact-page select {
+  }
+  
+  .contact-page select {
     cursor: pointer;
-}
-
-/* Error & Info Messages */
-.contact-page output {
+  }
+  
+  .contact-page output {
     display: block;
     color: red;
     font-size: 0.9rem;
-}
-
-/* Submit Button */
-.contact-page button {
+  }
+  
+  .contact-page input:focus:invalid,
+  .contact-page textarea:focus:invalid {
+    border-left: 4px solid red;
+    background-color: rgba(255, 0, 0, 0.1);
+    color: white;
+  }
+  
+  .contact-page input:valid,
+  .contact-page textarea:valid {
+    border-left: 4px solid green;
+    outline-color: green;
+  }
+  
+  .contact-page input:focus:valid,
+  .contact-page textarea:focus:valid {
+    border-left: 6px solid green;
+    outline-color: green;
+  }
+  
+  .contact-page input:placeholder-shown,
+  .contact-page textarea:placeholder-shown {
+    opacity: 0.6;
+  }
+  
+  .contact-page button {
     background-color: var(--primary-color, #056c08);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 12px;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.contact-page button:hover {
+  }
+  
+  .contact-page button:hover {
     background-color: var(--hover-color, #033605);
-}
+  }
+  
+  /* Character Counter */
+  #char-count {
+    display: inline-block;
+    color: white;
+  }
+  
+  /* Flash Animation */
+  .flash {
+    animation: flash 2s forwards;
+  }
+  
+  @keyframes flash {
+    0% { background-color: #ffdddd; }
+    100% { background-color: transparent; }
+  }
+  
+  /* Optional Warning/Error Styles */
+  .warning {
+    color: orange;
+  }
+  
+  .error {
+    color: red;
+  }
+  

@@ -8,12 +8,21 @@
 </head>
 <body>
     <header>
-        <nav>
+        <!-- Theme Switcher Button  -->
+<button id="theme-switcher" class="theme-switcher" aria-label="Toggle dark/light theme"></button>
+<noscript>
+  <style>
+    #theme-switcher { display: none; }
+  </style>
+  <p class="noscript-notice">Note: Theme switching requires JavaScript.</p>
+</noscript>
+        <nav class ="menu">
+            <ul>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="projects.html">Projects</a>
             <a href="contact.html">Contact</a>
-            
+            </ul>
         </nav>
     </header>
     
@@ -84,5 +93,7 @@
     <footer>
         <p>&copy; 2024 Akhil Kalakota</p>
     </footer>
+    <script src="script.js"></script>
+
 </body>
 </html>

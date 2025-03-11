@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
 <body class="contact-page">
     <header>
-        <!-- Theme Switcher Button  -->
-<button id="theme-switcher" class="theme-switcher" aria-label="Toggle dark/light theme"></button>
-<noscript>
-  <style>
-    #theme-switcher { display: none; }
-  </style>
-  <p class="noscript-notice">Note: Theme switching requires JavaScript.</p>
-</noscript>
-
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="experience.html">Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -31,16 +22,14 @@
     <main>
         <h1>Contact Me</h1>
 
-        <form id="contact-form" action="https://httpbin.org/post" method="POST">
-            <!-- Name Field (Only letters allowed) -->
+        <form action="https://httpbin.org/post" method="POST">
+            <!-- Name Field (Only letters allowed, min 2 chars, max 50 chars) -->
             <label for="name">Name: <span class="required">*</span></label>
             <input type="text" id="name" name="name" required pattern="[A-Za-z\s]{2,50}" title="Only letters and spaces allowed. Min 2, max 50 characters.">
-            <output id="name-error"></output>
 
-            <!-- Email Field -->
+            <!-- Email Field (Auto-validates as email) -->
             <label for="email">Email: <span class="required">*</span></label>
             <input type="email" id="email" name="email" required>
-            <output id="email-error"></output>
 
             <!-- Reason Dropdown -->
             <label for="reason">Reason for Contact: <span class="required">*</span></label>
@@ -55,17 +44,16 @@
                 </optgroup>
             </select>
 
-            <!-- Comments Field -->
+            <!-- Comments Field (Min 10 chars, Max 500 chars) -->
             <label for="comments">Comments: <span class="required">*</span></label>
-            <textarea id="comments" name="comments" rows="4" required minlength="10"></textarea>
-            <output id="char-count">500 characters left</output>
-            <output id="comments-error"></output>
+            <textarea id="comments" name="comments" rows="4" required minlength="10" maxlength="500"></textarea>
 
             <!-- Hidden Field -->
             <input type="hidden" name="possible_bot" value="true">
 
-            <!-- Error Tracking Field (for form_errors[]) -->
-            <input type="hidden" id="form-errors" name="form-errors">
+            <!-- Output Messages -->
+            <output id="error-message"></output>
+            <output id="info-message"></output>
 
             <!-- Submit Button -->
             <button type="submit">Send Message</button>
@@ -75,7 +63,5 @@
     <footer>
         <p>&copy; 2025 Akhil Kalakota</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>

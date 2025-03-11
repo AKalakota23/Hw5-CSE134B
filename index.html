@@ -1,105 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio site showcasing projects and skills.">
-    <meta name="author" content="Akhil Kalakota">
-    <meta name="keywords" content="portfolio, web development, HTML, CSS, JavaScript">
-    <meta property="og:title" content="Akhil's Portfolio">
-    <meta property="og:description" content="Portfolio site showcasing projects and skills.">
-    <meta property="og:image" content="pfp.jpg">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body { border: 1px solid black; }
-        img { width: 150px; height: auto; }
-        custom-semantic-element {
-            display: block;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid black;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio site showcasing projects and skills." />
+  <meta name="author" content="Akhil Kalakota" />
+  <meta name="keywords" content="portfolio, web development, HTML, CSS, JavaScript" />
+  <meta property="og:title" content="Akhil's Portfolio" />
+  <meta property="og:description" content="Portfolio site showcasing projects and skills." />
+  <meta property="og:image" content="pfp.jpg" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { border: 1px solid black; }
+    img { width: 150px; height: auto; }
+    custom-semantic-element {
+      display: block;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid black;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <hgroup>
-            <h1><span style ="color:red">Welcome to My Personal Domain</span></h1>
-        </hgroup>
-            <!-- Hamburger Menu Button -->
-        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
-        <nav class="menu">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <hgroup>
+      <h1><span style="color:red">Welcome to My Personal Domain</span></h1>
+    </hgroup>
+    <!-- Hamburger Menu Button -->
+    <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <!-- Theme Switcher Container placed under nav -->
+    <div class="theme-switcher-container">
+      <button id="theme-switcher" class="theme-switcher" aria-label="Toggle dark/light theme"></button>
+      <noscript>
+        <style>
+          #theme-switcher { display: none; }
+        </style>
+        <p class="noscript-notice">Note: Theme switching requires JavaScript.</p>
+      </noscript>
+    </div>
+    <!-- Custom Theme Picker (Collapsible Dropdown) -->
+    <details class="custom-theme-picker">
+      <summary>Customize Theme</summary>
+      <div class="custom-theme-options">
+        <label for="theme-name">Theme Name:</label>
+        <input type="text" id="theme-name" placeholder="My Custom Theme">
+        
+        <label for="bg-color-picker">Background Color:</label>
+        <input type="color" id="bg-color-picker" value="#393939">
+        
+        <label for="text-color-picker">Text Color:</label>
+        <input type="color" id="text-color-picker" value="#ffffff">
+        
+        <label for="font-picker">Font:</label>
+        <select id="font-picker">
+          <option value="'Arial', sans-serif">Arial</option>
+          <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+          <option value="'Lucida Sans', sans-serif">Lucida Sans</option>
+          <option value="'CustomFont', sans-serif">CustomFont</option>
+        </select>
+        
+        <button id="apply-custom-theme">Apply Custom Theme</button>
+        
+        <label for="saved-theme-selector">Saved Custom Themes:</label>
+        <select id="saved-theme-selector">
+          <!-- Options will be populated by JavaScript -->
+        </select>
+      </div>
+    </details>
+  </header>
 
-    <main>
-        <search>
-            <form action="/search">
-                <label for="search">Search:</label>
-                <input type="search" id="search" name="q">
-                <button type="submit">Go</button>
-            </form>
-        </search>
+  <main>
+    <search>
+      <form action="/search">
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="q">
+        <button type="submit">Go</button>
+      </form>
+    </search>
 
-        <section>
-            <h2>Introduction</h2>
-            <p>Welcome to my portfolio! Here, you'll find information about my <strong>projects</strong>, <em>skills</em>, and <b>experiences</b>.</p>
-            <figure>
-                <picture>
-                    <source srcset="images/pfp.webp" type="image/webp">
-                    <source srcset="images/pfp.jpg" type="image/jpeg">
-                    <img src="images/pfp.jpg" alt="Profile Picture" width = 300 loading="lazy" class="pfp">
-                </picture>
-                <figcaption><cite>My Photo taken in Las Vegas</cite></figcaption>
-            </figure>
-        </section>
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        Welcome to my portfolio! Here, you'll find information about my
+        <strong>projects</strong>, <em>skills</em>, and <b>experiences</b>.
+      </p>
+      <figure>
+        <picture>
+          <source srcset="images/pfp.webp" type="image/webp">
+          <source srcset="images/pfp.jpg" type="image/jpeg">
+          <img src="images/pfp.jpg" alt="Profile Picture" width="300" loading="lazy" class="pfp">
+        </picture>
+        <figcaption><cite>My Photo taken in Las Vegas</cite></figcaption>
+      </figure>
+    </section>
 
     <br>
 
-        <aside>
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="Copy of Copy of Software Engineer Resume .pdf" download>Resume</a></li>
-                <li><a href="contact.html">Get in Touch</a></li>
-            </ul>
-        </aside>
+    <aside>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="Copy of Copy of Software Engineer Resume .pdf" download>Resume</a></li>
+        <li><a href="contact.html">Get in Touch</a></li>
+      </ul>
+    </aside>
+  </main>
 
+  <footer>
+    <hr>
+    <address>Contact: <a href="mailto:akhilkalakota@gmail.com">akhilkalakota@gmail.com</a></address>
+    <small>&copy; 2025 Akhil Kalakota</small>
+  </footer>
 
+  <br>
 
- 
-    </main>
+  <script>
+    class HelloWorld extends HTMLElement {
+      connectedCallback() {
+        const template = document.getElementById("hello-world-template").content.cloneNode(true);
+        this.appendChild(template);
+      }
+    }
+    customElements.define("custom-hello-world", HelloWorld);
 
-    <footer>
-        <hr>
-        <address>Contact: <a href="mailto:akhilkalakota@gmail.com">akhilkalakota@gmail.com</a></address>
-        <small>&copy; 2025 Akhil Kalakota</small>
-    </footer>
-
-<br>
-
-    <script>
-        class HelloWorld extends HTMLElement {
-            connectedCallback() {
-                const template = document.getElementById("hello-world-template").content.cloneNode(true);
-                this.appendChild(template);
-            }
-        }
-        customElements.define("custom-hello-world", HelloWorld);
-
-        // Canvas drawing
-        const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#FF0000';
-        ctx.fillRect(10, 10, 50, 50);
-    </script>
+    // Canvas drawing (if a canvas element exists)
+    const canvas = document.getElementById('myCanvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#FF0000';
+      ctx.fillRect(10, 10, 50, 50);
+    }
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
