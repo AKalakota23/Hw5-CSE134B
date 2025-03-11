@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class = "contact-page">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Contact Me</h1>
+
+        <form action="https://httpbin.org/post" method="POST">
+            <!-- Name Field -->
+            <label for="name">Name: <span class="required">*</span></label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Email Field -->
+            <label for="email">Email: <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+
+            <!-- Reason Dropdown -->
+            <label for="reason">Reason for Contact: <span class="required">*</span></label>
+            <select id="reason" name="reason" required>
+                <optgroup label="Professional">
+                    <option value="job">Job Inquiry</option>
+                    <option value="collab">Collaboration</option>
+                </optgroup>
+                <optgroup label="General">
+                    <option value="question">Question</option>
+                    <option value="feedback">Feedback</option>
+                </optgroup>
+            </select>
+
+            <!-- Comments Field -->
+            <label for="comments">Comments: <span class="required">*</span></label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+
+            <!-- Hidden Field -->
+            <input type="hidden" name="possible_bot" value="true">
+
+            <!-- Output Messages -->
+            <output id="error-message"></output>
+            <output id="info-message"></output>
+
+            <!-- Submit Button -->
+            <button type="submit">Send Message</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Akhil Kalakota</p>
+    </footer>
+</body>
+</html>

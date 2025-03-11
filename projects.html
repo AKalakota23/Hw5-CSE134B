@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="experience.html">Resume</a>
+            <a href="contact.html">Contact</a>
+           
+        </nav>
+    </header>
+    
+    <main>
+        <h1>My Projects</h1>
+
+        <!-- Smart Watch Project -->
+        <article>
+            <details>
+                <summary>Smart Watch | Fall 2024</summary>
+                <iframe width = 200 height = 200 src="gifs/smartwatch-ezgif.com-resize.gif"></iframe>
+                <ul>
+                    <li>Designed and built Bluetooth-enabled smart watch using an ESP32 microcontroller.</li>
+                    <li>Integrated OLED display for real-time notifications from iPhone via BLE communication.</li>
+                    <li>Configured Apple Notification Center Service (ANCS) on ESP32.</li>
+                    <li>Utilized U8g2 library to customize OLED display output.</li>
+                </ul>
+                <video controls width="300">
+                    <source src="videos/smart-watch-demo.mp4" type="video/mp4">
+                    Your browser does not support video
+                </video>
+            </details>
+        </article>
+
+        <!-- Rodent Recon Project -->
+        <article>
+            <details>
+                <summary>Rodent Recon | Fall 2024 </summary>
+                <iframe width = 500 height = 200 src="gifs/squirrelani-ezgif.com-resize.gif" title ="Squirrel Gif" ></iframe>
+                <figcaption> <i>Gif provided by Kritzolf</i></figcaption>
+                <ul>
+                    <li>Built a security system using Raspberry Pi Zero 2 W and camera v2.</li>
+                    <li>Trained machine learning models to detect squirrels in backyard.</li>
+                    <li>Developed automated mechanism to trigger high-pitched noise when squirrels are detected.</li>
+                    <li>Engineered wireless communication system between camera, sensor, receiver, and speaker.</li>
+                </ul>
+                <audio controls>
+                    <source src="audio/highpitch.mp3" type="audio/mpeg">
+                    Your browser does not support audio
+                    <figcaption>Example of audio used to scare squirrels. Note: Pitch reduced so humans can hear</figcaption>
+                </audio>
+            </details>
+        </article>
+
+        <!-- IEEE HardHack Hackathon -->
+        <article>
+            <details>
+                <summary>IEEE HardHack Hackathon | Spring 2024</summary>
+                <iframe width = 200 height = 200 src = "gifs/emotions-ezgif.com-resize.gif"></iframe>
+                <ul>
+                    <li>Developed Arduino project to enhance deaf people's situational awareness during nighttime navigation.</li>
+                    <li>Utilized ultrasonic sensor and camera to record video when people approach.</li>
+                    <li>Implemented SpeechRecognition to transcribe audio to text and display on LCD.</li>
+                    <li>Performed sentiment analysis and lit LEDs based on connotation.</li>
+                </ul>
+                <figure>
+                    <picture>
+                        <source srcset="images/hardhack.webp" type="image/webp">
+                        <img src="images/hardhack.jpg" alt="IEEE HardHack Project" width="300" loading="lazy"  class="hardhack-pic">
+                    </picture>
+                    <figcaption>Project demonstration at IEEE HardHack</figcaption>
+                </figure>
+                <video controls width="300"> 
+                    <source src="videos/hardhackDemo.mp4" type="video/mp4">
+                    Your browser does not support video
+                </video>
+            </details>
+        </article>
+
+        <!-- Reinforcement Learning for Self-Driving Car -->
+        <article>
+            <details>
+                <summary>Reinforcement Learning for Self-Driving Car | Summer 2023</summary>
+                <iframe width = 200 height = 200 src = "gifs/tesla-ezgif.com-resize.gif"></iframe>
+                <ul>
+                    <li>Designed and developed autonomous robot using Soft-Actor-Critic (SAC) algorithm.</li>
+                    <li>Employed distance to track centerline as reward signal for training.</li>
+                    <li>Utilized Virtual Reality for real-time position and orientation tracking.</li>
+                    <li>Presented findings at Texas A&M Summer Research Symposium.</li>
+                </ul>
+                <canvas id="rlCanvas" width="300" height="200"></canvas>
+            </details>
+        </article>
+
+        <!-- Project Overview Table -->
+        <table>
+            <caption>Project Overview</caption>
+            <colgroup>
+                <col span="1" style="background-color:#f0f0f0">
+                <col span="2" style="background-color:#e0e0e0">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>Project</th>
+                    <th>Technologies</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Smart Watch</td>
+                    <td>ESP32, BLE, IoT, PCB</td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td>Rodent Recon</td>
+                    <td>Raspberry Pi, ML, IoT</td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td>IEEE HardHack</td>
+                    <td>Arduino, SpeechRecognition, Sentiment Analysis</td>
+                    <td>2024</td>
+                </tr>
+                <tr>
+                    <td>Self-Driving Car</td>
+                    <td>Reinforcement Learning, Autonomous Driving</td>
+                    <td>2023</td>
+                    <br>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Akhil Kalakota</p>
+    </footer>
+
+    <script>
+        // Canvas drawing for RL project visualization
+        const canvas = document.getElementById('rlCanvas');
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#00FF00';
+        ctx.fillRect(50, 50, 200, 100);
+        ctx.strokeStyle = '#0000FF';
+        ctx.beginPath();
+        ctx.moveTo(50, 50);
+        ctx.lineTo(250, 150);
+        ctx.stroke();
+    </script>
+</body>
+</html>
