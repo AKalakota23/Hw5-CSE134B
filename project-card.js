@@ -6,8 +6,8 @@ class ProjectCard extends HTMLElement {
   
   connectedCallback() {
     const title = this.getAttribute("title") || "Project Title";
-    const description = this.getAttribute("description") || "DeDeveloped Arduino project to enhance deaf people's situational awareness during nighttime navigation.";
-    const imgSrc = this.getAttribute("img-src") || "images/hardhack.jpg";
+    const description = this.getAttribute("description") || "Description";
+    const imgSrc = this.getAttribute("img-src") || "images/.jpg";
     const imgAlt = this.getAttribute("img-alt") || "Project image";
     const link = this.getAttribute("link") || "#";
     
