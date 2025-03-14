@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project CRUD Actions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Styles for the CRUD page */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .crud-container {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .crud-container h1 {
+      text-align: center;
+    }
+    form label {
+      display: block;
+      margin-top: 10px;
+    }
+    form input[type="text"],
+    form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    form button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #056c08;
+      color: #fff;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #033605;
+    }
+    .button-group {
+      text-align: center;
+    }
+    .button-group button {
+      margin: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="crud-container">
+    <h1>Project CRUD Actions</h1>
+    <form id="crud-form">
+      <label for="proj-index">Project Index (for Update/Delete):</label>
+      <input type="text" id="proj-index" placeholder="Leave blank to create new">
+
+      <label for="proj-title">Title:</label>
+      <input type="text" id="proj-title" required>
+
+      <label for="proj-description">Description:</label>
+      <textarea id="proj-description" rows="3" required></textarea>
+
+      <label for="proj-imgSrc">Image Source:</label>
+      <input type="text" id="proj-imgSrc" placeholder="e.g., images/project1.jpg">
+
+      <label for="proj-imgAlt">Image Alt Text:</label>
+      <input type="text" id="proj-imgAlt" placeholder="Project image description">
+
+      <label for="proj-link">Project Link:</label>
+      <input type="text" id="proj-link" placeholder="https://example.com">
+
+      <div class="button-group">
+        <button type="button" id="create-btn">Create</button>
+        <button type="button" id="update-btn">Update</button>
+        <button type="button" id="delete-btn">Delete</button>
+        <button type="button" id="read-btn">Read/Refresh</button>
+      </div>
+    </form>
+    <div id="projects-table-container">
+      <!-- Table for listing projects will be inserted here -->
+    </div>
+  </div>
+
+  <script>
+    // Key for storing project data in localStorage
+    const projectsKey = "projects";
+
+    // Retrieve projects from localStorage, or return an empty array if none exist.
+    function getProjects() {
+      return JSON.parse(localStorage.getItem(projectsKey)) || [];
+    }
+
+    // Save an array of projects to localStorage.
+    function saveProjects(projects) {
+      localStorage.setItem(projectsKey, JSON.stringify(projects));
+    }
+
+    // Render a table of projects into the container.
+    function renderProjectsTable() {
+      const projects = getProjects();
+      const container = document.getElementById("projects-table-container");
+      if (projects.length === 0) {
+        container.innerHTML = "<p>No projects found.</p>";
+        return;
+      }
+      let html = `<table>
+                    <thead>
+                      <tr>
+                        <th>Index</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Img Src</th>
+                        <th>Img Alt</th>
+                        <th>Link</th>
+                      </tr>
+                    </thead>
+                    <tbody>`;
+      projects.forEach((proj, index) => {
+        html += `<tr>
+                    <td>${index}</td>
+                    <td>${proj.title}</td>
+                    <td>${proj.description}</td>
+                    <td>${proj.imgSrc}</td>
+                    <td>${proj.imgAlt}</td>
+                    <td>${proj.link}</td>
+                  </tr>`;
+      });
+      html += `</tbody></table>`;
+      container.innerHTML = html;
+    }
+
+    // Create a new project
+    document.getElementById("create-btn").addEventListener("click", function () {
+      const title = document.getElementById("proj-title").value;
+      const description = document.getElementById("proj-description").value;
+      const imgSrc = document.getElementById("proj-imgSrc").value;
+      const imgAlt = document.getElementById("proj-imgAlt").value;
+      const link = document.getElementById("proj-link").value;
+      if (!title || !description) {
+        alert("Title and Description are required.");
+        return;
+      }
+      const projects = getProjects();
+      projects.push({ title, description, imgSrc, imgAlt, link });
+      saveProjects(projects);
+      renderProjectsTable();
+      alert("Project created!");
+    });
+
+    // Update an existing project by index
+    document.getElementById("update-btn").addEventListener("click", function () {
+      const index = document.getElementById("proj-index").value;
+      if (index === "" || isNaN(index)) {
+        alert("Please enter a valid project index to update.");
+        return;
+      }
+      const projects = getProjects();
+      if (index < 0 || index >= projects.length) {
+        alert("Project index out of range.");
+        return;
+      }
+      const title = document.getElementById("proj-title").value;
+      const description = document.getElementById("proj-description").value;
+      const imgSrc = document.getElementById("proj-imgSrc").value;
+      const imgAlt = document.getElementById("proj-imgAlt").value;
+      const link = document.getElementById("proj-link").value;
+      projects[index] = { title, description, imgSrc, imgAlt, link };
+      saveProjects(projects);
+      renderProjectsTable();
+      alert("Project updated!");
+    });
+
+    // Delete an existing project by index
+    document.getElementById("delete-btn").addEventListener("click", function () {
+      const index = document.getElementById("proj-index").value;
+      if (index === "" || isNaN(index)) {
+        alert("Please enter a valid project index to delete.");
+        return;
+      }
+      const projects = getProjects();
+      if (index < 0 || index >= projects.length) {
+        alert("Project index out of range.");
+        return;
+      }
+      projects.splice(index, 1);
+      saveProjects(projects);
+      renderProjectsTable();
+      alert("Project deleted!");
+    });
+
+    // Refresh the list of projects
+    document.getElementById("read-btn").addEventListener("click", function () {
+      renderProjectsTable();
+    });
+
+    // Initial render of the table
+    renderProjectsTable();
+  </script>
+</body>
+</html>
