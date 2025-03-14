@@ -29,18 +29,18 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load data from a remote server using My JSON Server
   function loadRemoteData() {
     // Replace the URL below with your actual endpoint
-    const remoteURL = "https://api.jsonbin.io/v3/b/67d3b5308a456b79667578e1";
-    fetch("https://api.jsonbin.io/v3/b/67d3b5308a456b79667578e1")
+    const remoteURL = "https://my-json-server.typicode.com/AKalakota23/portfolio-data/projects";
+    fetch("https://my-json-server.typicode.com/AKalakota23/portfolio-data/projects")
       .then(response => {
+        console.log("Response status:", response.status);
         if (!response.ok) {
           throw new Error("Network response was not ok.");
         }
         return response.json();
       })
       .then(data => {
-        // Assume the data is either an array or an object with a 'projects' property
+        console.log("Fetched data:", data);
         const projects = Array.isArray(data) ? data : data.projects;
-        // Save the fetched projects to localStorage for future use
         localStorage.setItem("projects", JSON.stringify(projects));
         renderProjects(projects);
       })
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error fetching remote projects:", error);
         alert("Failed to load remote project data.");
       });
+  
   }
 
   // Event listeners for the buttons
