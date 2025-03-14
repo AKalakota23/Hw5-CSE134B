@@ -419,4 +419,14 @@
   
 }
 
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;        /* Cards wrap to next line if there's not enough space */
+  gap: 16px;              /* Spacing between cards */
+  justify-content: center;/* Center them horizontally (optional) */
+  margin: 16px auto;      /* Some spacing around container (optional) */
+  max-width: 1200px;      /* Optional max width for the container */
+}
+
+
 
