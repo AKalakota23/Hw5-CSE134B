@@ -23,6 +23,7 @@ class ProjectCard extends HTMLElement {
           border: 1px solid var(--card-border, #ccc);
           padding: var(--card-padding, 16px);
           margin: var(--card-margin, 16px);
+          max-width: 300px;
           box-shadow: var(--card-shadow, 0 2px 4px rgba(0,0,0,0.1));
           border-radius: 8px;
           font-family: var(--card-font, 'Arial', sans-serif);

@@ -416,10 +416,7 @@
   --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   --card-font: 'Arial', sans-serif;
   --primary-color: #056c08;
+  
 }
 
 
-main {
-  width: 50%;
-  max-width: 800px;
-}
