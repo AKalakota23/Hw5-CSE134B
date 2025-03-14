@@ -1,31 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("project-cards-container");
+  const btnLoadLocal = document.getElementById("load-local");
+  const btnLoadRemote = document.getElementById("load-remote");
 
-  // Try to load from localStorage
-  let projects = JSON.parse(localStorage.getItem("projects")) || [];
-
-  // If no data in localStorage, fetch from remote JSON
-  if (projects.length === 0) {
-    fetch("projects.json")
-      .then(response => response.json())
-      .then(data => {
-        projects = data.projects; // e.g. { "projects": [ { ... }, { ... } ] }
-        // Save to localStorage
-        localStorage.setItem("projects", JSON.stringify(projects));
-        renderProjects(projects);
-      })
-      .catch(error => {
-        console.error("Error fetching projects:", error);
-      });
-  } else {
-    // We already have projects from localStorage
-    renderProjects(projects);
-  }
-
+  // Function to render an array of project data as <project-card> elements
   function renderProjects(projects) {
-    // Clear container before rendering
-    container.innerHTML = "";
-
+    container.innerHTML = ""; // Clear any existing cards
     projects.forEach(project => {
       const card = document.createElement("project-card");
       card.setAttribute("title", project.title);
@@ -33,8 +13,48 @@ document.addEventListener("DOMContentLoaded", function () {
       card.setAttribute("img-src", project.imgSrc);
       card.setAttribute("img-alt", project.imgAlt);
       card.setAttribute("link", project.link);
-
       container.appendChild(card);
     });
+  }
+
+  // Load data from localStorage
+  function loadLocalData() {
+    const projects = JSON.parse(localStorage.getItem("projects")) || [];
+    if (projects.length === 0) {
+      alert("No local project data found.");
+    }
+    renderProjects(projects);
+  }
+
+  // Load data from a remote server using My JSON Server
+  function loadRemoteData() {
+    // Replace the URL below with your actual endpoint
+    const remoteURL = "https://my-json-server.typicode.com/AKalakota23/portfolio-data/projects";
+    fetch("https://my-json-server.typicode.com/AKalakota23/portfolio-data/projects")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Assume the data is either an array or an object with a 'projects' property
+        const projects = Array.isArray(data) ? data : data.projects;
+        // Save the fetched projects to localStorage for future use
+        localStorage.setItem("projects", JSON.stringify(projects));
+        renderProjects(projects);
+      })
+      .catch(error => {
+        console.error("Error fetching remote projects:", error);
+        alert("Failed to load remote project data.");
+      });
+  }
+
+  // Event listeners for the buttons
+  if (btnLoadLocal) {
+    btnLoadLocal.addEventListener("click", loadLocalData);
+  }
+  if (btnLoadRemote) {
+    btnLoadRemote.addEventListener("click", loadRemoteData);
   }
 });
