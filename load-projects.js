@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load data from a remote server using My JSON Server
   function loadRemoteData() {
     // Replace the URL below with your actual endpoint
-    const remoteURL = "https://my-json-server.typicode.com/AKalakota23/portfolio-data/projects";
-    fetch("https://my-json-server.typicode.com/AKalakota23/portfolio-data/projects")
+    const remoteURL = "https://api.jsonbin.io/v3/b/67d3b5308a456b79667578e1";
+    fetch("https://api.jsonbin.io/v3/b/67d3b5308a456b79667578e1")
       .then(response => {
         if (!response.ok) {
           throw new Error("Network response was not ok.");
