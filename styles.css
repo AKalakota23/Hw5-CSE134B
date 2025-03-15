@@ -429,4 +429,37 @@
 }
 
 
+.icon-links {
+  text-align: middle; 
+  margin: 20px 0;
+}
+
+.icon-links a {
+  margin: 0 0px;
+  text-decoration: none;
+  color: inherit;
+  vertical-align: middle;
+}
+
+.icon-links svg {
+  transition: transform 0.2s ease;
+}
+
+.icon-links a:hover svg {
+  transform: scale(1.2);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  flex-wrap: wrap;
+  gap: 20px; /* Space between heading and icons */
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
 
